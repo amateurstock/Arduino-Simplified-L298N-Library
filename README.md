@@ -11,7 +11,7 @@ Copy both the L298N source and header file to the same location where your ".ino
 Copy the L298N source and header file to the src and include folders, respectively.
 
 ## Usage
-Each instance of the L298N object is good for *one motor* only. The L298N object has two overloads, one for a PWM-driven motor, and one for a digital-driven motor. There's also only one method provided with two overloads, one for each type of motor.
+Each instance of the L298N object is good for *one motor* only. The L298N object has two overloads, one for a PWM-driven motor, and one for a digital-driven motor. There are two methods, `updateMotor()` and `stopMotor()`. The former has two overloads good for both motor types, the latter is universal for both.
 
 ### PWM-driven motor
 Example:
