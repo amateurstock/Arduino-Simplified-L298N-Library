@@ -41,8 +41,11 @@ public:
     );
 
     // Used with PWM
-    void updateMotors(MotorsType dir, uint8_t value);
+    void updateMotor(MotorsType dir, uint8_t value);
 
     // Used without PWM
-    void updateMotors(MotorsType dir);
+    void updateMotor(MotorsType dir);
+
+    // Universal
+    void stopMotor(void);
 };

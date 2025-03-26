@@ -10,11 +10,15 @@ void setup() {
 }
 
 void loop() {
-    leftMotor.updateMotors(L298N::FORWARD);
-    rightMotor.updateMotors(L298N::FORWARD, 64);
+    leftMotor.updateMotor(L298N::FORWARD);
+    rightMotor.updateMotor(L298N::FORWARD, 64);
     delay(5000);
 
-    leftMotor.updateMotors(L298N::BACKWARD, 128);
-    rightMotor.updateMotors(L298N::BACKWARD);
+    leftMotor.updateMotor(L298N::BACKWARD, 128);
+    rightMotor.updateMotor(L298N::BACKWARD);
+    delay(5000);
+
+    leftMotor.stopMotor();
+    rightMotor.stopMotor();
     delay(5000);
 }

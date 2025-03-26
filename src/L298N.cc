@@ -30,10 +30,10 @@ L298N::L298N(
     digitalWrite(this->LOG_PIN_2, 0);
 }
 
-void L298N::updateMotors(MotorsType dir, uint8_t value) {
+void L298N::updateMotor(MotorsType dir, uint8_t value) {
     if (!this->isUsingPWM) {
         Serial.println("You are using a digital-enabled motor with unexpected PWM value.");
-        updateMotors(dir);
+        updateMotor(dir);
         return;
     }
 
@@ -46,20 +46,20 @@ void L298N::updateMotors(MotorsType dir, uint8_t value) {
     }
 }
 
-void L298N::updateMotors(MotorsType dir) {
+void L298N::updateMotor(MotorsType dir) {
     if (this->isUsingPWM) {
         Serial.println("You are using a PWM-enabled motor without PWM value.");
         switch (dir) {
             case STOP: {
-                updateMotors(dir, 0);
+                updateMotor(dir, 0);
                 break;
             }
             case FORWARD: {
-                updateMotors(dir, 255);
+                updateMotor(dir, 255);
                 break;
             }
             case BACKWARD: {
-                updateMotors(dir, 255);
+                updateMotor(dir, 255);
                 break;
             }
         }
@@ -85,5 +85,10 @@ void L298N::updateMotors(MotorsType dir) {
     }
 }
 
-
-
+void L298N::stopMotor() {
+    if (isUsingPWM) {
+        updateMotor(STOP, 0);
+    } else {
+        updateMotor(STOP);
+    }
+}
